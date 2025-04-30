@@ -1,4 +1,48 @@
 .container{
     height: 80vh;
     background-color: aliceblue;
+    text-align: center;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#todo_list{
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#list_block{
+    text-align: center;
+}
+
+
+#search_form{
+    margin: 20px;
+}
+
+.item_box{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.modify_button{
+    background-color: aquamarine;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 5px ;
+}
+
+
+.row_item{
+    margin: 10px;
 }
