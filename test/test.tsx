@@ -23,7 +23,7 @@ export default function test(): JSX.Element {
     function addToList() {
         input_value.trim(); // Remove leading & trailing white space
 
-        if (input_value === "") { 
+        if (input_value === "") {
             setError(true);
         } else {
             setError(false);
@@ -69,32 +69,36 @@ export default function test(): JSX.Element {
 
             {/*  tbh theres a lot going on here */}
             <div id={styles.list_block}>
-                <dl id='todo_list'>
+                <table id={styles.todo_list}>
                     {   //iterate through each item in the todo_list array
                         todo_list.map((item, index) => (
-                            <dt className={styles.row_item}>
-                                <p className={styles.item_box}>{item}</p>
+                            <tr>
+                                <td className={styles.item_box_p}><p>{item}</p></td>
                                 {!edit_show && (
-                                     
-                                    <span>
+                                    <div>
                                         {/* This is our edit and delete button. The edit points to one of the edit functions above and the delete button fires a simple function that filters out the array and set the array state. */}
                                         {/* These buttons are also encased in the edit_show flag so that when we edit an item, we can't accidentally mess with other items */}
-                                        <button className={styles.modify_button} onClick={() => editListItem(index)}>Edit</button>
-                                        <button className={styles.modify_button} onClick={() => { setTodoList(thelist => thelist.filter(item => item !== todo_list[index])) }}>X</button>
-                                    </span>
+                                        <td className={styles.item_box}>
+                                            <button className={styles.modify_button} onClick={() => editListItem(index)}>Edit</button>
+                                        </td>
+                                        <td className={styles.item_box}>
+                                            <button className={styles.modify_button} onClick={() => { setTodoList(thelist => thelist.filter(item => item !== todo_list[index])) }}>X</button>
+                                        </td>
+                                    </div>
+                                    
                                 )}
                                 {edit_show && edit_index === index && (
-                                    <span>
+                                    <td>
                                         {/*  This is the user edit item text input and button. It is hidden by default until the user clicks on edit on the appropriate item. */}
                                         {/*  Only 1 edit bar should be shown and we're keeping trackof it */}
                                         <input type="text" placeholder='Edit value' value={edit_value} onChange={e => { setEditValue(e.currentTarget.value); }} />
                                         <button onClick={() => editFinalize()}>Finish</button>
-                                    </span>
+                                    </td>
                                 )}
-                            </dt>
+                            </tr>
                         ))
                     }
-                </dl>
+                </table>
             </div>
         </div>
     );
